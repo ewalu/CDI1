@@ -25,8 +25,8 @@ public class NonLifeCalculation implements Calculation{
 	//@MultiplierForRisk(RiskSymbol.NNW)
 	//private Multiplier multiplierNNW;
 	
-	@Inject
-	private MultiplierFactory factory;
+	//@Inject
+	//private MultiplierFactory factory;
 	
 	
 	@Override
@@ -34,12 +34,12 @@ public class NonLifeCalculation implements Calculation{
 		BigDecimal premium = policy.getRisks().stream().map(item -> item.getBasePremium().multiply(BigDecimal.valueOf(0.95))).reduce(BigDecimal.ZERO,
 				BigDecimal::add);
 		
-		//policy.getRisks().forEach(item-> {
-			//Multiplier multiplier = factory.getMultiplier(item);
-			//premium = multiplier.multiply(premium);
-		//});
+		/*policy.getRisks().forEach(item-> {
+			Multiplier multiplier = factory.getMultiplier(item);
+			premium = multiplier.multiply(premium);
+		});*/
 		
-		if(policy.getRisks().stream().filter(RiskSymbol.OC::equals).findFirst().isPresent()) {
+		/*if(policy.getRisks().stream().filter(RiskSymbol.OC::equals).findFirst().isPresent()) {
 			premium = factory.getMultiplier(RiskSymbol.OC).multiply(premium);
 		}
 		
@@ -49,7 +49,7 @@ public class NonLifeCalculation implements Calculation{
 		
 		if(policy.getRisks().stream().filter(RiskSymbol.NNW::equals).findFirst().isPresent()) {
 			premium = factory.getMultiplier(RiskSymbol.NNW).multiply(premium);
-		}
+		}*/
 		
 		policy.setPremium(premium);
 		return policy;
