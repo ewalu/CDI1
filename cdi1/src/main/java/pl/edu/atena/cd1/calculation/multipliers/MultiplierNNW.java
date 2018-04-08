@@ -7,7 +7,7 @@ import javax.enterprise.inject.Alternative;
 import pl.edu.atena.cdi1.RiskSymbol;
 
 @MultiplierForRisk(RiskSymbol.NNW)
-@Alternative
+//@Alternative
 public class MultiplierNNW implements Multiplier {
 
 	@Override
